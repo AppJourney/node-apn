@@ -163,7 +163,7 @@ note.pushType = "liveactivity",
 note.relevanceScore = 75,
 note.timestamp = Math.floor(Date.now() / 1000); // Current time
 note.staleDate = Math.floor(Date.now() / 1000) + (8 * 3600); // Expires 8 hour from now.
-note.events = "update"
+note.event = "update"
 note.contentState = {}
 ```
 

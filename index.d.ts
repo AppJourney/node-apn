@@ -88,15 +88,23 @@ interface ApsSound {
   volume: number;
 }
 
+type ApsEvent = 'start' | 'update' | 'end';
+
 interface Aps {
-  alert?: string | ApsAlert
-  "launch-image"?: string
-  badge?: number
-  sound?: string | ApsSound
-  "content-available"?: undefined | 1
-  "mutable-content"?: undefined | 1
-  "url-args"?: string[]
-  category?: string
+  alert?: string | ApsAlert;
+  "launch-image"?: string;
+  badge?: number;
+  sound?: string | ApsSound;
+  "content-available"?: undefined | 1;
+  "mutable-content"?: undefined | 1;
+  "url-args"?: string[];
+  category?: string;
+  "relevance-score"?: number;
+  timestamp?: number;
+  "stale-date"?: number;
+  "dismiss-date"?: number;
+  event?: ApsEvent;
+  "content-state"?: any;
 }
 
 export interface ResponseSent {
@@ -165,7 +173,7 @@ export class MultiProvider extends EventEmitter {
   shutdown(callback?: () => void): void;
 }
 
-export type NotificationPushType = 'background' | 'alert' | 'voip';
+export type NotificationPushType = 'background' | 'alert' | 'voip' | 'liveactivity';
 
 export interface NotificationAlertOptions {
   title?: string;
@@ -249,6 +257,18 @@ export class Notification {
    * The value to specify for `payload.aps['url-args']`. This used for Safari Push NOtifications and should be an array of values in accordance with the Web Payload Documentation.
    */
   public urlArgs: string[];
+
+  public relevanceScore?: number | undefined;
+
+  public timestamp?: number | undefined;
+
+  public event?: ApsEvent | undefined;
+
+  public staleDate?: number | undefined;
+
+  public dismissDate?: number | undefined;
+
+  public contentState?: any | undefined;
 }
 
 export function token(token: (string | Buffer)) : string
