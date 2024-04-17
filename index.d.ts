@@ -266,7 +266,7 @@ export class Notification {
 
   public staleDate?: number | undefined;
 
-  public dismissDate?: number | undefined;
+  public dismissalDate?: number | undefined;
 
   public contentState?: any | undefined;
 }
