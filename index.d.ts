@@ -89,6 +89,7 @@ interface ApsSound {
 }
 
 type ApsEvent = 'start' | 'update' | 'end';
+type ApsInterruptionLevel = 'passive' | 'active' | 'time-sensitive' | 'critical';
 
 interface Aps {
   alert?: string | ApsAlert;
@@ -103,6 +104,7 @@ interface Aps {
   timestamp?: number;
   "stale-date"?: number;
   "dismiss-date"?: number;
+  "interruption-level"?: ApsInterruptionLevel;
   event?: ApsEvent;
   "content-state"?: any;
 }
@@ -269,6 +271,8 @@ export class Notification {
   public dismissalDate?: number | undefined;
 
   public contentState?: any | undefined;
+
+  public interruptionLevel?: ApsInterruptionLevel | undefined;
 }
 
 export function token(token: (string | Buffer)) : string
