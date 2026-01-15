@@ -371,9 +371,13 @@ export class Notification {
    */
   public mdm: string|Object;
   /**
-   * The value to specify for `payload.aps['url-args']`. This used for Safari Push NOtifications and should be an array of values in accordance with the Web Payload Documentation.
+   * The value to specify for `payload.aps['url-args']`. This used for Safari Push Notifications and should be an array of values in accordance with the Web Payload Documentation.
    */
   public urlArgs: string[];
+  /**
+   * The value to specify for `payload.aps['interruption-level']`. The notification’s importance and required delivery timing.
+   */
+  public interruptionLevel?: string | ApsNotificationInterruptionLevel;
 }
 
 export function token(token: (string | Buffer)) : string
